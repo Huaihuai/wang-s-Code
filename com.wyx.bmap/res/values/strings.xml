@@ -4,5 +4,11 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_my_bmap">MyBMap</string>
+    <string name="title_activity_bus_line_search">BusLineSearch</string>
+    <string name="title_activity_poi_search">PoiSearch</string>
+    <string name="title_activity_route_plane">RoutePlane</string>
+    <string name="str_id_start">开始</string>
+    <string name="str_id_bus">公交车</string>
+    <string name="title_activity_map_demo">MapDemo</string>
 
 </resources>

@@ -9,24 +9,32 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Toast;
 
 import com.baidu.mapapi.BMapManager;
 import com.baidu.mapapi.GeoPoint;
 import com.baidu.mapapi.ItemizedOverlay;
+import com.baidu.mapapi.LocationListener;
 import com.baidu.mapapi.MapActivity;
 import com.baidu.mapapi.MapController;
 import com.baidu.mapapi.MapView;
+import com.baidu.mapapi.MyLocationOverlay;
 import com.baidu.mapapi.OverlayItem;
 import com.wyx.common.BMapApiDemoApp;
 
 public class MyBMap extends MapActivity {
 	private MapView mapView;
-	private MapController mapController;
-	private GeoPoint geoPoint;
+	private MapController mapController;   //地图控制器
+	private GeoPoint geoPoint;             //经纬坐标（与Point区分）
+	private LocationListener locationListener;   //onResume时注册此listener，onPause时需要Remove
+	private MyLocationOverlay myLocationOverlay;
+	private View popView;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,34 +55,46 @@ public class MyBMap extends MapActivity {
         Log.d("MapViewDemo", "the init time is  " + iTime);
         mapView = (MapView)findViewById(R.id.bmapsView);
         mapView.setBuiltInZoomControls(true);             //调用系统缩放控件
+        mapView.setDrawOverlayWhenZooming(true);          //设置在缩放动画过程中也显示overlay,默认为不绘制 
         mapController = mapView.getController();
         geoPoint = new GeoPoint((int) (39.915 * 1E6), (int) (116.404 * 1E6));   //设置坐标点
         mapController.setCenter(geoPoint);      //设置地图中心点
         mapController.setZoom(12);           //设置地图的展示级别
         mapView.setDoubleClickZooming(false);   //双击进行地图的缩放
-        mapView.setTraffic(true);             //是否显示交通道路图
+//        mapView.setTraffic(true);             //是否显示交通道路图
 //        mapView.setSatellite(true);           //卫星图
         
         //获取标记在地图上的图标
         Drawable marker = getResources().getDrawable(R.drawable.iconmarka);
         //将图层放入MapView中
         mapView.getOverlays().add(new OverItemT(marker,this));    //类当参数传入是需要实例；
+        //标签添加
+        popView = getLayoutInflater().inflate(R.layout.popview, null);
+		mapView.addView(popView, new MapView.LayoutParams(                   //??
+				LayoutParams.WRAP_CONTENT,
+				LayoutParams.WRAP_CONTENT, null,
+				MapView.LayoutParams.BOTTOM_CENTER));
+		popView.setVisibility(View.GONE);
+		
+
+        //定位操作
+        myLocationOverlay = new MyLocationOverlay(this, mapView);
+//        myLocationOverlay.enableCompass();       //启用指南针
+//        myLocationOverlay.enableMyLocation();    //启用定位
+        mapView.getOverlays().add(myLocationOverlay);
+        locationListener = new LocationListener(){
+
+			@Override
+			public void onLocationChanged(Location location) {
+				// TODO Auto-generated method stub
+				if(location != null){
+					GeoPoint pt = new GeoPoint((int)(location.getLatitude()*1E6), (int)(location.getLongitude()*1E6));
+					mapView.getController().animateTo(pt);
+				}
+			}
+        	
+        };
         
-        
-        
-        
-//        BMapManager mBMapMan = new BMapManager(getApplication());
-//        mBMapMan.init("FDA2E27D4B157B806FBC6E69D9D838DFEEA7BCB0", null);
-//        super.initMapActivity(mBMapMan);
-//         
-//        MapView mMapView = (MapView) findViewById(R.id.bmapsView);
-//        mMapView.setBuiltInZoomControls(true);  //设置启用内置的缩放控件
-//         
-//        MapController mMapController = mMapView.getController();  // 得到mMapView的控制权,可以用它控制和驱动平移和缩放
-//        GeoPoint point = new GeoPoint((int) (39.915 * 1E6),
-//                (int) (116.404 * 1E6));  //用给定的经纬度构造一个GeoPoint，单位是微度 (度 * 1E6)
-//        mMapController.setCenter(point);  //设置地图中心点
-//        mMapController.setZoom(12);    //设置地图zoom级别
     }
 
     class OverItemT extends ItemizedOverlay<OverlayItem>{  
@@ -151,29 +171,64 @@ public class MyBMap extends MapActivity {
 		@Override
 		public boolean onTap(int i) {
 			// TODO Auto-generated method stub
-//			setFocus(overlayList.get(i));
-//			Toast.makeText(this.mContext, overlayList.get(i).getSnippet(), Toast.LENGTH_LONG);
-//			
-//			return true; 
-			
+//			setFocus(overlayList.get(i));    //??
+			GeoPoint pt = getItem(i).getPoint();
+			int x = marker.getIntrinsicWidth();
+			int y = marker.getIntrinsicHeight();
+			mapView.getController().animateTo(pt);
+			mapView.updateViewLayout(popView, new MapView.LayoutParams(  
+	                LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, geoPoint,  
+	                MapView.LayoutParams.BOTTOM_CENTER));
+			popView.setVisibility(View.VISIBLE);
 			Toast.makeText(this.mContext, overlayList.get(i).getSnippet(),
 	                Toast.LENGTH_SHORT).show();
-	        return true;
+	        return super.onTap(i);
 		}
 		
-//		@Override
-//		public boolean onTap(GeoPoint arg0, MapView arg1) {
-//			// TODO Auto-generated method stub
-//			// 消去弹出的气泡
-////			ItemizedOverlayDemo.mPopView.setVisibility(View.GONE);
-//			return super.onTap(arg0, arg1);
-//		}
+		@Override
+		public boolean onTap(GeoPoint arg0, MapView arg1) {
+			// TODO Auto-generated method stub
+			// 消去弹出的气泡
+			popView.setVisibility(View.GONE);
+			return super.onTap(arg0, arg1);
+		}
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_my_bmap, menu);
         return true;
     }
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		BMapApiDemoApp app = new BMapApiDemoApp();
+		if(app.mBMapMan == null){
+        	app.mBMapMan = new BMapManager(getApplication());
+        	app.mBMapMan.init(app.mStrKey, new BMapApiDemoApp.MyGeneralListener());
+        }
+		app.mBMapMan.getLocationManager().removeUpdates(locationListener);
+		myLocationOverlay.disableCompass();
+		myLocationOverlay.disableMyLocation();
+		app.mBMapMan.stop();
+		super.onPause();
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+//		BMapApiDemoApp app = new BMapApiDemoApp();
+//		if(app.mBMapMan == null){
+//        	app.mBMapMan = new BMapManager(getApplication());
+//        	app.mBMapMan.init(app.mStrKey, new BMapApiDemoApp.MyGeneralListener());
+//        }
+//		// 注册定位事件，定位后将地图移动到定位点
+//		app.mBMapMan.getLocationManager().requestLocationUpdates(locationListener);
+//		myLocationOverlay.enableCompass();
+//		myLocationOverlay.enableMyLocation();
+//		app.mBMapMan.start();
+		super.onResume();
+	}
 
 	@Override
 	protected boolean isRouteDisplayed() {
