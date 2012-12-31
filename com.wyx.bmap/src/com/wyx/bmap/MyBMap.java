@@ -53,7 +53,7 @@ public class MyBMap extends MapActivity {
         super.initMapActivity(app.mBMapMan);
         iTime = System.nanoTime() - iTime;
         Log.d("MapViewDemo", "the init time is  " + iTime);
-        mapView = (MapView)findViewById(R.id.bmapsView);
+        mapView = (MapView)findViewById(R.id.bmapView);
         mapView.setBuiltInZoomControls(true);             //调用系统缩放控件
         mapView.setDrawOverlayWhenZooming(true);          //设置在缩放动画过程中也显示overlay,默认为不绘制 
         mapController = mapView.getController();

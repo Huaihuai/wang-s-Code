@@ -4,7 +4,7 @@
 	android:layout_height="fill_parent">
 	<TextView android:layout_width="fill_parent"
 		android:layout_height="wrap_content" android:text="hello" />
-	<com.baidu.mapapi.MapView android:id="@+id/bmapsView"
+	<com.baidu.mapapi.MapView android:id="@+id/bmapView"
 		android:layout_width="fill_parent" android:layout_height="fill_parent"
 		android:clickable="true" />
 </LinearLayout>

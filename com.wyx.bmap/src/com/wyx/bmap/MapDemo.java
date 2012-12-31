@@ -28,9 +28,9 @@ public class MapDemo extends Activity {
     };
     Class<?> mActivities[] = {
     		MyBMap.class,
-    		RoutePlane.class,
     		BusLineSearch.class,
     		PoiSearch.class,
+    		RoutePlane.class,
     };
     @Override
     public void onCreate(Bundle savedInstanceState) {
