@@ -1,0 +1,9 @@
+1.在res下添加values-zh（放置中文字符）
+         添加values-en(放置英文字符);
+2.如果需要将中文分成简体中文和繁体中文（英语分成英式英语和美式英语），
+如美式英语，需要文件夹命名成values-en-rUS;
+3.如果没有为特定国家设定文字，系统将自动引用values文件夹下的文字;
+4.同样针对于有文字的图片依然需要按照以上做法进行国际化,如drawable-en,drawable-en-hdpi;
+
+注：操作系统会自动根据自己的语言状态，加载语言文件夹;
+Android中的资源与国际化：http://blog.csdn.net/android_tutor/article/details/5874367（包含横批竖屏切换时的布局设置）
