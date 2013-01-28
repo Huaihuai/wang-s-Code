@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:orientation="vertical" android:background="#FF787878">
+
+
+		<FrameLayout android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:layout_alignParentBottom="true">
+			<ImageView android:id="@+id/picture_tiankong"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:src="@drawable/composer_camera"
+				android:layout_gravity="right|bottom" 
+				android:layout_marginRight="2dip"
+				android:layout_marginBottom="2dip"/>
+
+			<ImageView android:id="@+id/music" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:src="@drawable/composer_music"
+				android:layout_gravity="right|bottom"
+				android:layout_marginRight="2dip"
+				android:layout_marginBottom="2dip" />
+
+			<ImageView android:id="@+id/place" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:src="@drawable/composer_place"
+				android:layout_gravity="right|bottom"
+                android:layout_marginRight="2dip"
+				android:layout_marginBottom="2dip"/>
+
+			<ImageView android:id="@+id/sleep" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:src="@drawable/composer_sleep" android:layout_gravity="right|bottom"
+				android:layout_marginRight="2dip"
+				android:layout_marginBottom="2dip"/>
+
+
+			<ImageView android:id="@+id/thought" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:src="@drawable/composer_thought" android:layout_gravity="right|bottom"
+				android:layout_marginRight="2dip"
+				android:layout_marginBottom="2dip"/>
+
+			<ImageView 
+			    android:id="@+id/with" 
+			    android:layout_width="wrap_content"
+				android:layout_height="wrap_content" 
+				android:src="@drawable/composer_with" 
+				android:layout_gravity="right|bottom"
+				android:layout_marginRight="2dip"
+				android:layout_marginBottom="2dip"/>
+
+			<FrameLayout android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:clickable="true"
+				android:onClick="myanimation" android:layout_gravity="right|bottom">
+
+				<ImageView android:id="@+id/friends" android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:src="@drawable/composer_button" />
+
+				<ImageView android:id="@+id/myplus" android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:src="@drawable/composer_icn_plus"
+					android:layout_gravity="center" />
+			</FrameLayout>
+		</FrameLayout>
+	
+</LinearLayout>
