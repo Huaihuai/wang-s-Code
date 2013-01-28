@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:screenOrientation="landscape"
+    android:orientation="vertical" >
+
+    <!-- <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/hello_world"
+        tools:context=".MainActivity" />
+     -->
+     <Button 
+         android:id="@+id/jump"
+         android:text="Go to new Activity!"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:onClick="clickToNew"/>
+     
+     <Button 
+         android:id="@+id/pop"
+         android:text="Pop Window"
+         android:layout_below="@id/jump"
+         android:layout_marginTop="5dip"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:onClick="clickPop"/>
+     
+     <EditText 
+         android:id="@+id/content1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="Please put me into file!"
+         android:layout_below="@id/pop"
+         android:layout_marginTop="5dip"/>
+     
+	<Button 
+         android:id="@+id/save"
+         android:text="Save"
+         android:layout_below="@id/content1"
+         android:layout_marginTop="5dip"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:onClick="clickSave"/>
+	
+	<Button 
+         android:id="@+id/read"
+         android:text="Read"
+         android:layout_below="@id/save"
+         android:layout_marginTop="5dip"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:onClick="clickRead"/>
+	
+	<Button 
+         android:id="@+id/saveToSDcard"
+         android:text="Save To SDcard"
+         android:layout_below="@id/read"
+         android:layout_marginTop="5dip"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:onClick="clickSaveToSDcard"/>
+	
+	<Button 
+         android:id="@+id/testRemoteService"
+         android:text="Test Remote Service"
+         android:layout_below="@id/saveToSDcard"
+         android:layout_marginTop="5dip"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:onClick="clickTestRemoteService"/>
+</RelativeLayout>

@@ -1,0 +1,30 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/tip1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_world"
+        tools:context=".NewActivity" />
+    
+    <Button 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="quitSys"
+        android:text="Quit System"
+        android:layout_below="@id/tip1"
+        android:id="@+id/tip2"/>
+    
+    
+	<Button 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="passData"
+        android:text="Pass Data To Next"
+        android:layout_below="@id/tip2"
+        android:layout_marginTop="5dip"/>
+
+</RelativeLayout>
