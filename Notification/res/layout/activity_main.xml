@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="horizontal" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+	<Button 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="默认消息提示"
+	    android:id="@+id/default_"/>
+	<Button
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="自定义消息提示"
+	    android:layout_below="@id/default_"
+	    android:layout_marginTop="5dip"
+	    android:id="@+id/customer"/>
+	
+	
+	<Button
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="取消通知"
+	    android:layout_below="@id/customer"
+	    android:layout_marginTop="15dip"
+	    android:id="@+id/cancel"/>
+
+</RelativeLayout> 
