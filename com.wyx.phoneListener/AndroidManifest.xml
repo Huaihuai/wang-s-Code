@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.wyx.phoneListener"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="9" />
+    <!-- 监听电话状态的权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!-- 在SDCard中创建与删除文件的权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <!-- 往SDCard中写如数据的权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- 网络连接权限-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- 录音权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.wyx.phoneListener.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- 电话监听服务 -->
+        <service android:name=".PhoneService"></service>
+        <!-- 供本地服务调用  -->
+        <service android:name=".StudentInfoService"></service>
+        <!-- 供远程服务调用 -->
+        <service android:name=".StudentInfoRemoteService">
+            <intent-filter>
+                <action android:name="android.wyx.phoneListener.StudentInfoService"/>
+            </intent-filter>
+        </service>
+        
+        <receiver android:name=".BroadsReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>   <!--开机启动广播的订阅-->
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
