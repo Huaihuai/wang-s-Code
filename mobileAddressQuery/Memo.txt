@@ -1,1 +1,1 @@
-Webservice调用，发送数据实体案例是是实现
+Webservice调用，发送数据实体(POST)案例是是实现
