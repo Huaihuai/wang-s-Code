@@ -78,6 +78,22 @@ public class MainActivity extends Activity {
 		}
 	}
 	
+	
+	//实现接口的第二种方式
+//	private ServiceConnection connection = new ServiceConnection() {
+//		
+//		@Override
+//		public void onServiceDisconnected(ComponentName name) {
+//			// TODO Auto-generated method stub
+//			
+//		}
+//		
+//		@Override
+//		public void onServiceConnected(ComponentName name, IBinder service) {
+//			// TODO Auto-generated method stub
+//			
+//		}
+//	};
 	//销毁Activity前解除绑定
 	@Override
 	protected void onDestroy() {

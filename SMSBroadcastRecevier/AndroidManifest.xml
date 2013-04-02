@@ -26,7 +26,7 @@
             <!-- 需要将该广播的优先级高于系统短信应用中的广播优先级 -->
             <intent-filter android:priority="1000" >
                 
-				<!-- 类似于监听事件（当促发改事件是进行广播）[action决定了广播监听的事件] -->
+				<!-- 类似于监听事件（当促发该事件是进行广播）[action决定了广播监听的事件] -->
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />     
             </intent-filter>
         </receiver>

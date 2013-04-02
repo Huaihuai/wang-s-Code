@@ -19,5 +19,4 @@ public class StreamTool {
 		inStream.close();
 		return outStream.toByteArray();
 	}
-
 }

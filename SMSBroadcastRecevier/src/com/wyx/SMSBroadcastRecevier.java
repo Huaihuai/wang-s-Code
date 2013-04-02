@@ -29,6 +29,7 @@ public class SMSBroadcastRecevier extends BroadcastReceiver {
 			String receiveDateString = new SimpleDateFormat("yyyy-MM-dd HH:mm:aa").format(date);
 			String senderNumber = message.getOriginatingAddress();
 			
+			//在系统广播短信时，进行短信过滤，实现拦截
 			if(senderNumber.equals("5556")){
 				abortBroadcast();    //终止系统广播（即短信应用中的广播无法在工作）；
 			}

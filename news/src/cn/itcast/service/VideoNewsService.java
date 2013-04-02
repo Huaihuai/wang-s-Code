@@ -41,6 +41,7 @@ public class VideoNewsService {
 	private static List<News> parseJSON(InputStream inStream) throws Exception{
 		List<News> newses = new ArrayList<News>();
 		byte[] data = StreamTool.read(inStream);
+		//将Byte[]转换成String
 		String json = new String(data);
 		JSONArray array = new JSONArray(json);
 		for(int i = 0 ; i < array.length() ; i++){
@@ -70,23 +71,24 @@ public class VideoNewsService {
 	}
 	/**
 	 * 解析服务器返回的xml数据
-<?xml version="1.0" encoding="UTF-8" ?> 
-<videonews>
-  <news id="35">
-  <title>喜羊羊与灰太狼全集</title> 
-  <timelength>90</timelength> 
-  </news>
- <news id="12">
-  <title>老张与灰太狼</title> 
-  <timelength>20</timelength> 
-  </news>
- <news id="56">
-  <title>老方与LILI</title> 
-  <timelength>30</timelength> 
-  </news>
-</videonews>
 	 * @param inStream
-	 * @return
+	 * @return List<News>
+	 *
+	 *<?xml version="1.0" encoding="UTF-8" ?> 
+	 *<videonews>
+	 *<news id="35">
+	 *<title>喜羊羊与灰太狼全集</title> 
+	 *<timelength>90</timelength> 
+	 *</news>
+	 *<news id="12">
+	 *<title>老张与灰太狼</title> 
+	 *<timelength>20</timelength> 
+	 *</news>
+	 *<news id="56">
+	 *<title>老方与LILI</title> 
+	 *<timelength>30</timelength> 
+	 *</news>
+	 *</videonews>
 	 */
 	private static List<News> parseXML(InputStream inStream) throws Exception {
 		List<News> newses = new ArrayList<News>();
