@@ -1,1 +1,0 @@
-Metadata:为activity，service，broadcast提供额外固定数据
