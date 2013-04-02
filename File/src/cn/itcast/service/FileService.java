@@ -22,69 +22,69 @@ public class FileService {
 		outStream.close();
 	}
 	/**
-	 * 保存文件
-	 * @param filename 文件名称
-	 * @param content 文件内容
+	 * 淇濆瓨鏂囦欢
+	 * @param filename 鏂囦欢鍚嶇О
+	 * @param content 鏂囦欢鍐呭
 	 */
 	public void save(String filename, String content) throws Exception {
-		//私有操作模式：创建出来的文件只能被本应用访问，其它应用无法访问该文件，另外采用私有操作模式创建的文件，写入文件中的内容会覆盖原文件的内容
+		//绉佹湁鎿嶄綔妯″紡锛氬垱寤哄嚭鏉ョ殑鏂囦欢鍙兘琚湰搴旂敤璁块棶锛屽叾瀹冨簲鐢ㄦ棤娉曡闂鏂囦欢锛屽彟澶栭噰鐢ㄧ鏈夋搷浣滄ā寮忓垱寤虹殑鏂囦欢锛屽啓鍏ユ枃浠朵腑鐨勫唴瀹逛細瑕嗙洊鍘熸枃浠剁殑鍐呭
 		FileOutputStream outStream = context.openFileOutput(filename, Context.MODE_PRIVATE);
 		outStream.write(content.getBytes());
 		outStream.close();
 	}
 	
 	/**
-	 * 保存文件
-	 * @param filename 文件名称
-	 * @param content 文件内容
+	 * 淇濆瓨鏂囦欢
+	 * @param filename 鏂囦欢鍚嶇О
+	 * @param content 鏂囦欢鍐呭
 	 */
 	public void saveAppend(String filename, String content) throws Exception {//ctrl+shift+y / x
-		//私有操作模式：创建出来的文件只能被本应用访问，其它应用无法访问该文件，另外采用私有操作模式创建的文件，写入文件中的内容会覆盖原文件的内容
+		//绉佹湁鎿嶄綔妯″紡锛氬垱寤哄嚭鏉ョ殑鏂囦欢鍙兘琚湰搴旂敤璁块棶锛屽叾瀹冨簲鐢ㄦ棤娉曡闂鏂囦欢锛屽彟澶栭噰鐢ㄧ鏈夋搷浣滄ā寮忓垱寤虹殑鏂囦欢锛屽啓鍏ユ枃浠朵腑鐨勫唴瀹逛細瑕嗙洊鍘熸枃浠剁殑鍐呭
 		FileOutputStream outStream = context.openFileOutput(filename, Context.MODE_APPEND);
 		outStream.write(content.getBytes());
 		outStream.close();
 	}
 	
 	/**
-	 * 保存文件
-	 * @param filename 文件名称
-	 * @param content 文件内容
+	 * 淇濆瓨鏂囦欢
+	 * @param filename 鏂囦欢鍚嶇О
+	 * @param content 鏂囦欢鍐呭
 	 */
 	public void saveReadable(String filename, String content) throws Exception {
-		//私有操作模式：创建出来的文件只能被本应用访问，其它应用无法访问该文件，另外采用私有操作模式创建的文件，写入文件中的内容会覆盖原文件的内容
+		//绉佹湁鎿嶄綔妯″紡锛氬垱寤哄嚭鏉ョ殑鏂囦欢鍙兘琚湰搴旂敤璁块棶锛屽叾瀹冨簲鐢ㄦ棤娉曡闂鏂囦欢锛屽彟澶栭噰鐢ㄧ鏈夋搷浣滄ā寮忓垱寤虹殑鏂囦欢锛屽啓鍏ユ枃浠朵腑鐨勫唴瀹逛細瑕嗙洊鍘熸枃浠剁殑鍐呭
 		FileOutputStream outStream = context.openFileOutput(filename, Context.MODE_WORLD_READABLE);
 		outStream.write(content.getBytes());
 		outStream.close();
 	}
 	
 	/**
-	 * 保存文件
-	 * @param filename 文件名称
-	 * @param content 文件内容
+	 * 淇濆瓨鏂囦欢
+	 * @param filename 鏂囦欢鍚嶇О
+	 * @param content 鏂囦欢鍐呭
 	 */
 	public void saveWriteable(String filename, String content) throws Exception {
-		//私有操作模式：创建出来的文件只能被本应用访问，其它应用无法访问该文件，另外采用私有操作模式创建的文件，写入文件中的内容会覆盖原文件的内容
+		//绉佹湁鎿嶄綔妯″紡锛氬垱寤哄嚭鏉ョ殑鏂囦欢鍙兘琚湰搴旂敤璁块棶锛屽叾瀹冨簲鐢ㄦ棤娉曡闂鏂囦欢锛屽彟澶栭噰鐢ㄧ鏈夋搷浣滄ā寮忓垱寤虹殑鏂囦欢锛屽啓鍏ユ枃浠朵腑鐨勫唴瀹逛細瑕嗙洊鍘熸枃浠剁殑鍐呭
 		FileOutputStream outStream = context.openFileOutput(filename, Context.MODE_WORLD_WRITEABLE);
 		outStream.write(content.getBytes());
 		outStream.close();
 	}
 	
 	/**
-	 * 保存文件
-	 * @param filename 文件名称
-	 * @param content 文件内容
+	 * 淇濆瓨鏂囦欢
+	 * @param filename 鏂囦欢鍚嶇О
+	 * @param content 鏂囦欢鍐呭
 	 */
 	public void saveRW(String filename, String content) throws Exception {
-		//私有操作模式：创建出来的文件只能被本应用访问，其它应用无法访问该文件，另外采用私有操作模式创建的文件，写入文件中的内容会覆盖原文件的内容
+		//绉佹湁鎿嶄綔妯″紡锛氬垱寤哄嚭鏉ョ殑鏂囦欢鍙兘琚湰搴旂敤璁块棶锛屽叾瀹冨簲鐢ㄦ棤娉曡闂鏂囦欢锛屽彟澶栭噰鐢ㄧ鏈夋搷浣滄ā寮忓垱寤虹殑鏂囦欢锛屽啓鍏ユ枃浠朵腑鐨勫唴瀹逛細瑕嗙洊鍘熸枃浠剁殑鍐呭
 		FileOutputStream outStream = context.openFileOutput(filename, Context.MODE_WORLD_WRITEABLE + Context.MODE_WORLD_READABLE);
 		outStream.write(content.getBytes());
 		outStream.close();
 	}
 	
 	/**
-	 * 读取文件内容
-	 * @param filename 文件名称
-	 * @return 文件内容
+	 * 璇诲彇鏂囦欢鍐呭
+	 * @param filename 鏂囦欢鍚嶇О
+	 * @return 鏂囦欢鍐呭
 	 * @throws Exception
 	 */
 	public String read(String filename) throws Exception {

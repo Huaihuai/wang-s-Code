@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
 			String content = contentText.getText().toString();
 			FileService service = new FileService(getApplicationContext());
 			try {
-				//ÅĞ¶ÏSDCardÊÇ·ñ´æÔÚ£¬²¢ÇÒ¿ÉÒÔ¶ÁĞ´
+				//åˆ¤æ–­SDCardæ˜¯å¦å­˜åœ¨ï¼Œå¹¶ä¸”å¯ä»¥è¯»å†™
 				if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
 					service.saveToSDCard(filename, content);
 					Toast.makeText(getApplicationContext(), R.string.success, 1).show();
