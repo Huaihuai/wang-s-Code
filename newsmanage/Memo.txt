@@ -1,3 +1,0 @@
-1¡¢Post,Get instance£»
-2¡¢HttpClient instance£»
-3¡¢use Http uploader files instance£»
