@@ -1,0 +1,29 @@
+$#include "tolua_fix.h"
+$#include "NUITools.h"
+$using namespace NUITools;
+
+void NUITools_Init();
+
+void NUITools_RegisterScriptHandler(LUA_FUNCTION tHandler);
+void NUITools_UnregisterScriptHandler();
+void NUITools_ScriptCompletetCallback();
+
+void NUITools_ShowInputDialog(char* tTitle, char* tMessage, char* tContent, char* tPlaceHolder, char* tButtons);
+const char* NUITools_GetInputDialogResult();
+
+void NUITools_ShowAlertDialog(char* tTitle, char* tMessage, char* tButtons);
+int NUITools_GetAlertDialogResult();
+
+void NUITools_ShowActionSheet(char* tTitle, char* tCancelBtn, char* tDestructiveBtn, char* tButtons);
+int NUITools_GetActionSheetResult();
+
+void NUITools_ShowIndicator(int tType ,char* tInfo);
+void NUITools_HideIndicator();
+void NUITools_ShowCompleteIndicator(bool tbAnimated, double tfDelay, char* tInfo);
+
+void NUITools_ShowCustomDialog(bool tbAnimated, char* tPlaceHolder);
+void NUITools_HideCustomDialog(bool tbAnimated);
+int NUITools_GetCustomDialogResultBtn();
+const char* NUITools_GetCustomDialogResultText();
+
+bool NUITools_ShowAppStoreInfo(char* appID);

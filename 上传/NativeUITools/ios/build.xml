@@ -1,0 +1,22 @@
+<project name="NUIToolsLuaApi" default="create-lua-bindings" basedir=".">
+    <description>
+        Utilises tolua++ to create the lua bindings to expose snslib  functionality to lua
+    </description>
+	
+	<target name="cocos2d-x-bindings">
+    <echo message="Patching resultant lua bindings" />
+	
+	 <replace file="NUIToolsLuaApi.cpp">
+      <replacetoken><![CDATA[tolua_isusertype(tolua_S,1,"LUA_FUNCTION",0,&tolua_err))]]></replacetoken>
+      <replacevalue><![CDATA[tolua_isfunction(tolua_S,1,&tolua_err))]]></replacevalue>
+   </replace>
+    
+	<replace file="NUIToolsLuaApi.cpp">
+      <replacetoken><![CDATA[LUA_FUNCTION tHandler = *((LUA_FUNCTION*)  tolua_tousertype(tolua_S,]]></replacetoken>
+      <replacevalue><![CDATA[int tHandler = (tolua_ref_function(tolua_S,]]></replacevalue>
+    </replace>
+	
+	<echo message="ant tolua done" />
+  </target>
+  <target name="create-lua-bindings" depends="cocos2d-x-bindings" />
+</project>
